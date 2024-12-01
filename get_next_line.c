@@ -6,51 +6,85 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:56:49 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/11/29 22:16:29 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:56:05 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
+char	*join_and_free(char *buffer, char *buf)
 {
-	static char	*stash;
-	char		*line;
-	int			char_read;
+	char	*temp;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	temp = ft_strjoin(buffer, buf);
+	free(buf);
+	return (temp);
+}
+
+char	*read_file(int fd, char *buffer)
+{
+	char	*buf;
+	int		char_read;
+
+	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!buf)
 		return (NULL);
 	char_read = 1;
-	line = NULL;
-	read_folder(fd, &stash, &char_read);
-	if (!stash)
+	while (char_read > 1)
+	{
+		char_read = read(fd, buf, BUFFER_SIZE);
+		if (char_read == -1)
+		{
+			free(buf);
+			return (NULL);
+		}
+		buf[char_read] = '\0';
+		buffer = join_and_free(buffer, buf);
+		if (ft_strchr(buf, '\n'))
+			break;
+	}
+	free(buf);
+	return (buffer);
+}
+
+char	*create_line(char *buffer)
+{
+	int		i;
+	char	*line;
+
+	i = 0;
+	line 
+}
+
+char	*get_next_line(int fd)
+{
+	static char		*buffer;
+	char			*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
+	buffer = read_file(fd, buffer);
+	if (!buffer)
+		return (NULL);
+	line = create_line(buffer);
 	return (line);
 }
 
-void	read_folder(int fd, char *stash, int *char_read)
+#include <fcntl.h>
+#include <stdio.h>
+int	main(void)
 {
-	char	*buf;
-	int		i;
+	int		fd;
+	char	*line;
 
-	i = 0;
-	buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (!buf)
-		return ;
-	while (!search_new_line(stash) && char_read != 0)
+	fd = open("test", O_RDONLY);
+	while (1)
 	{
-		*char_read = read(fd, buf, BUFFER_SIZE);
-		if (*char_read == 0 || *char_read == -1)
-		{
-			free(buf);
-			return ;
-		}
-		buf[*char_read] = '\0';
-		add_to_stash(stash, buf, char_read);
+		line = get_next_line(fd);
+		printf("%s", line);
+		if (line == NULL)
+			break ;
+		free(line);
 	}
-}
-
-void	add_to_stash(char *stash, char *buf, int *char_read)
-{
-	
+	return (0);
 }
