@@ -6,7 +6,7 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 22:02:16 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/12/12 00:48:13 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:55:26 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ char	*ft_strchr(char *s, int c)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = -1;
