@@ -6,7 +6,7 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 22:02:16 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/12/11 23:00:53 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/12/12 00:48:13 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = -1;
-	if(!s1)
+	if (!s1)
 	{
 		s1 = malloc(sizeof(char) * 1);
 		s1[0] = '\0';
