@@ -6,7 +6,7 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 22:02:16 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/12/12 00:55:26 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/12/12 01:00:01 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,16 @@ int	ft_strlen(char *str)
 
 char	*ft_strchr(char *s, int c)
 {
-	int	len;
 	int	i;
 
 	i = 0;
 	if (!s)
 		return (0);
-	len = ft_strlen(s);
-	while (len >= 0)
+	while (s[i])
 	{
 		if (s[i] == (char)c)
 			return ((char *)&s[i]);
 		i++;
-		len--;
 	}
 	return (NULL);
 }
