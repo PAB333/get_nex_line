@@ -6,7 +6,7 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 22:02:16 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/12/12 01:00:01 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/12/12 12:46:11 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strchr(char *s, int c)
+int	found_newline(char *s)
 {
 	int	i;
 
@@ -33,11 +33,11 @@ char	*ft_strchr(char *s, int c)
 		return (0);
 	while (s[i])
 	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
+		if (s[i] == '\n')
+			return (1);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
 char	*ft_strjoin(char *s1, char *s2)

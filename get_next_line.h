@@ -6,7 +6,7 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 22:02:22 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/12/12 00:47:56 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/12/12 12:45:37 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*read_file(int fd, char *stash);
 char	*fill_line(char *stash);
 char	*clean_stash(char *stash);
 int		ft_strlen(char *str);
-char	*ft_strchr(char *s, int c);
+int		found_newline(char *s);
 char	*ft_strjoin(char *s1, char *s2);
 
 #endif
