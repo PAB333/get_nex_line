@@ -6,7 +6,7 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 22:38:15 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/12/12 00:48:23 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:16:54 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 int	main(void)
 {
 	int		fd;
 	char	*line;
+	int		delay;
 
+	delay = 500000;
 	fd = open("test", O_RDONLY);
 	while (1)
 	{
@@ -28,6 +31,7 @@ int	main(void)
 		if (line == NULL)
 			break ;
 		free(line);
+		usleep(delay);
 	}
 	return (0);
 }
